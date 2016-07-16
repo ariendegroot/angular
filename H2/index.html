@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular JS</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body data-ng-app>
+<div class="container">
+	<h1>{{ 2 + 3 }}</h1>
+	<input type="text" name="Naam" ng-model="firstName" class="input-lg" placeholder="Typ je naam..." />
+	<h2>Hello {{ firstName }}</h2>
+</div>
+<div class="container">
+	<input type="checkbox" 
+			value="yellow" 
+			ng-model="colorWithValue" 
+			ng-true-value="'Geel is geselecteerd'"
+			ng-false-value="'Geel is niet geselecteerd'" />Geel
+	<p>Gechecked : {{ colorWithValue }}</p>
+</div>
+<div class="container"
+		ng-init="names=['Arien', 'Debbie', 'Marianne', 'Chris']">
+	<h1>ng-repeat en ng-init</h1>
+	<ul>
+	<li ng-repeat="firstName in names"> Hello {{ firstName }}</li>
+	</ul>
+</div>
+<div class="container"
+		ng-init="persons=[	
+							{name : 'Arien', lastname:'de Groot'},
+							{name : 'Debbie', lastname:'van Ruitenburg'}, 
+							{name : 'Marianne', lastname: 'Heuvelman - Pols'},
+							{name : 'Christiaan', lastname: 'Heuvelman'},
+						 ]">
+	<h1>ng repeat en objecten</h1>
+	<p> 
+		<input type="text" name="Omgekeerd sorteren" ng-model="naam" class="input-lg" placeholder="filter op naam..."/> 
+	</p>
+	<ul>
+	<li ng-repeat="person in persons | filter : { lastname: naam } as numResults"> 
+		Hello {{ person.name | uppercase }} {{ person.lastname | lowercase }}
+	</li>
+	<li ng-if="numResults.length === 0">
+		<strong>Geen resultaten gevonden...</strong>
+	</li>
+	</ul>
+</div>
+<!--- vendor scripts --> 
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+</body>
+</html></head>
